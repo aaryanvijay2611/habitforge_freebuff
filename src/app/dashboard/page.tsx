@@ -32,8 +32,18 @@ export default function DashboardPage() {
         .eq('user_id', user.id)
         .order('created_at', { ascending: true });
 
-      if (habitsError) console.error('Failed to fetch habits:', habitsError);
-      if (habitsData) setHabits(habitsData);
+      console.log("Current user:", user.id);
+
+if (habitsError) {
+  console.error("Habits error:", habitsError);
+}
+
+console.log("Habits fetched:", habitsData);
+
+if (habitsData) {
+  console.log("Setting habits:", habitsData.length);
+  setHabits(habitsData);
+}
 
       // Fetch today's completions
       const today = new Date().toISOString().split('T')[0];

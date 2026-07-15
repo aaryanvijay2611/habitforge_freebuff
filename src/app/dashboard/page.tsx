@@ -35,7 +35,23 @@ export default function DashboardPage() {
       console.log("Current user:", user.id);
 
 if (habitsError) {
-  console.error("Habits error:", habitsError);
+  console.error('Failed to fetch habits:', habitsError);
+}
+
+alert(
+  JSON.stringify(
+    {
+      user: user.id,
+      habits: habitsData,
+      error: habitsError,
+    },
+    null,
+    2
+  )
+);
+
+if (habitsData) {
+  setHabits(habitsData);
 }
 
 console.log("Habits fetched:", habitsData);
